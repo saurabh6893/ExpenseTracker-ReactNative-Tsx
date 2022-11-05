@@ -8,6 +8,7 @@ export const GloablStyles = {
   },
 
   normal: {
-    white: 'white'
+    white: 'white',
+    black: 'black',
   }
 }

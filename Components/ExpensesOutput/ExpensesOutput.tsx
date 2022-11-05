@@ -1,13 +1,12 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { FlatList, Text, View } from 'react-native'
+import ExpensesSummary from './ExpensesSummary'
 
 export const ExpensesOutput: any = ({ expenses }: any) => {
   return (
     <View>
-      <View>
-        <Text>Last few Days</Text>
-        <Text>250rs</Text>
-      </View>
+      <ExpensesSummary />
+      <FlatList />
     </View>
   )
 }

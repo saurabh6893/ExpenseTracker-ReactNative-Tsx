@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import Icon from 'react-native-ionicons'
+import { AntDesign } from '@expo/vector-icons'
 import ManageExpenses from './Screens/ManageExpenses'
 import RecentExpenses from './Screens/RecentExpenses'
 import AllExpenses from './Screens/AllExpenses'
@@ -18,6 +18,7 @@ function ExpenseOverview() {
         headerStyle: { backgroundColor: GloablStyles.vintage1950s.paperblue },
         headerTintColor: GloablStyles.normal.white,
         tabBarStyle: { backgroundColor: GloablStyles.vintage1950s.paperblue },
+        tabBarInactiveTintColor: GloablStyles.normal.black,
         tabBarActiveTintColor: GloablStyles.vintage1950s.nothing,
       }}
     >
@@ -28,12 +29,22 @@ function ExpenseOverview() {
           title: 'Recent Expenses',
           tabBarLabel: 'Recent',
           tabBarIcon: ({ color, size }) => (
-            <Icon name='hourglass' size={size} color={color} />
+            <AntDesign name='hourglass' size={size} color={color} />
           ),
         }}
       />
 
-      <BottomStack.Screen name='All' component={AllExpenses} />
+      <BottomStack.Screen
+        name='All'
+        component={AllExpenses}
+        options={{
+          title: 'All Expenses',
+          tabBarLabel: 'All Expenses',
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name='calendar' size={size} color={color} />
+          ),
+        }}
+      />
     </BottomStack.Navigator>
   )
 }
@@ -47,7 +58,7 @@ export default function App() {
           <Stack.Screen
             name='Expense'
             component={ExpenseOverview}
-            options={{ headerShown: true }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen name='Manage' component={ManageExpenses} />
         </Stack.Navigator>
